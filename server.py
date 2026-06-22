@@ -268,4 +268,5 @@ if __name__ == "__main__":
     import sys
     # When debugging or inspecting, FastMCP can run using stdio
     # But by default, if run directly, it will run as streamable-http as required.
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=8000)
+    port = int(os.getenv("PORT", 8000))
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
