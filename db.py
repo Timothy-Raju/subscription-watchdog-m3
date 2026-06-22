@@ -14,9 +14,10 @@ def get_connection():
     db_url = os.getenv("DATABASE_URL")
     if not db_url:
         env_keys = list(os.environ.keys())
+        commit_sha = os.getenv("RAILWAY_GIT_COMMIT_SHA", "unknown")
         raise ValueError(
             "DATABASE_URL environment variable is not set. "
-            f"Available env keys: {env_keys}"
+            f"Active Commit: {commit_sha}. Available env keys: {env_keys}"
         )
     return psycopg2.connect(
         db_url,
